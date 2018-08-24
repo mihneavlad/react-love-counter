@@ -12,7 +12,7 @@ describe('Counter', () => {
     component = shallow(<Counter />);
   });
 
-  xit('should render one input', () => {
+  it('should render one input', () => {
     const inputs = component.find('input[type="text"]');
     expect(inputs.length).toBe(1);
   });
@@ -22,12 +22,12 @@ describe('Counter', () => {
     expect(buttons.length).toBe(1);
   });
 
-  xit('should render one .decrment button', () => {
+  it('should render one .decrment button', () => {
     const buttons = component.find('button.decrement');
     expect(buttons.length).toBe(1);
   });
 
-  xit('should have it\'s own count state', () => {
+  it('should have it\'s own count state', () => {
     expect(component.state()).not.toBeNull();
     expect(component.state('count')).toBeDefined();
   })
@@ -39,11 +39,11 @@ describe('Counter', () => {
       input = component.find('input[type="text"]').first();
     });
 
-    xit('should be readOnly', () => {
+    it('should be readOnly', () => {
       expect(input.props().readOnly).toBeTruthy();
     });
 
-    xit('displays count from state', () => {
+    it('displays count from state', () => {
       expect(input.props().value).toBe(component.state('count'));
     })
   });
@@ -56,11 +56,11 @@ describe('Counter', () => {
       button = component.find('button.increment').first();
     });
 
-    xit('contains +', () => {
+    it('contains +', () => {
       expect(button.text()).toContain('+');
     });
 
-    xit('incrments the input value by 1 when clicked', () => {
+    it('incrments the input value by 1 when clicked', () => {
       const before = getInputValue();
 
       button.simulate('click');
@@ -78,11 +78,11 @@ describe('Counter', () => {
       button = component.find('button.decrement').first();
     });
 
-    xit('contains -', () => {
+    it('contains -', () => {
       expect(button.text()).toContain('-');
     });
 
-    xit('decrements the input value by 1 when clicked', () => {
+    it('decrements the input value by 1 when clicked', () => {
       // Incrment in case the count is 0
       setInputValue(4);
 
@@ -94,7 +94,7 @@ describe('Counter', () => {
       expect(getInputValue()).toBe(before - 1);
     });
 
-    xit('cannot decrement input value below 0', () => {
+    it('cannot decrement input value below 0', () => {
       setInputValue(0);
 
       button.simulate('click');
