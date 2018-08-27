@@ -14,14 +14,11 @@ class Counter extends Component {
   };
 
   decrement = () => {
+
+    if (this.state.count <= 0) return;
+
     this.setState(({count}) => ({
       count: count - 1
-    }));
-  };
-
-  preventNegative = () => {
-    this.setState(({count}) => ({
-      count: count > 0
     }));
   };
 
@@ -31,7 +28,7 @@ class Counter extends Component {
       <Fragment>
         <input type="text" readOnly value={this.state.count} />
         <button className="increment" onClick={this.increment}>+</button>
-        <button className="decrement" onClick={this.decrement.preventNegative}>-</button>
+        <button className="decrement" onClick={this.decrement}>-</button>
       </Fragment>
     )
   }
